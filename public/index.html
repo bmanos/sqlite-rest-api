@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite Rest-API with Javascript</title>
+</head>
+
+<body>
+    <h1>Get users!!</h1>
+    <!-- <div id="myData"></div> -->
+    <div>
+        <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id='data'>
+
+        </tbody>
+        </table> 
+    </div>
+    <script>
+        // const usersPromise = fetch('http://localhost:3000/api/users')
+        // console.log(usersPromise)
+
+        // usersPromise
+        //     .then(data => data.json())
+        //     .then(data => {
+        //         data.data.forEach((item) => {
+        //             console.log(item.id)
+        //             console.log(item.name)
+        //             console.log(item.email)
+        //             console.log(item.password)
+        //         })  
+        //     })
+        //     .catch((err) => {
+        //         console.log(err)
+        //     })
+        fetch('http://localhost:3000/api/users').then(
+            res =>
+            res.json().then(
+                data => {
+                    //console.log(data)
+                    if(data.data.length > 0){
+                        let val = ''
+                        // Start loop
+                        data.data.forEach((item) => {
+                            val += '<tr>'
+                            val += '<td>' + item.name + '</td>'
+                            val += '<td>' + item.email + '</td></tr>'
+                            //console.log(item.name)
+                            //console.log(item.email)
+                        })
+                        // End loop
+                        document.getElementById('data').innerHTML = val
+                    }
+                }
+            )
+        )
+    </script>
+</body>
+
+</html>

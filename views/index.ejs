@@ -1,0 +1,16 @@
+<%- include("_header") -%>
+
+<h1>Get users!!</h1>
+
+<ul>
+
+    <% for (const users of model) { %>
+      <li>
+        <%= user.name %>
+        <em>(<%= user.email %>)</em>
+      </li>
+    <% } %>
+  
+  </ul>
+
+<%- include("_footer") -%>
