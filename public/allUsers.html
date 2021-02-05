@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div id="root">
+    <div id="data"></div>
+</div>
+<body >
+    <script>
+    //getData()
+
+    fetch('/myApi/Allusers').then(
+        res =>
+        res.json().then(
+                data => {
+    
+        for (item of data.data) {
+            const root = document.createElement('div')
+            const user = document.createElement('div')
+            const email = document.createElement('div')
+            const pass = document.createElement('div')
+
+            user.textContent = `name: ${item.name}`
+            email.textContent = `email: ${item.email}`
+            pass.textContent = `password: ${item.password}`
+
+            document.body.append(root)
+        }
+        console.log(data)
+        }
+    )
+)
+    </script>
+</body>
+</html>
